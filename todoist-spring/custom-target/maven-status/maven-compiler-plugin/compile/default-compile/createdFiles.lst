@@ -1,0 +1,6 @@
+com\example\springboot\config\WebConfig.class
+com\example\springboot\controller\TaskController.class
+com\example\springboot\SpringbootApplication.class
+com\example\springboot\dto\TaskServiceDTO.class
+com\example\springboot\model\Task.class
+com\example\springboot\repository\TaskRepository.class

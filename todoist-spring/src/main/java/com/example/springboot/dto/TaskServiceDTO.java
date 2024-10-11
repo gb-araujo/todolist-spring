@@ -9,6 +9,7 @@ public class TaskServiceDTO {
 
     public TaskServiceDTO() {
     }
+    private String title;
     private String description;
     private boolean completed;
 

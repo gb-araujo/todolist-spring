@@ -12,6 +12,7 @@ public class Task implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    String title;
     String description;
     boolean completed;
 }
