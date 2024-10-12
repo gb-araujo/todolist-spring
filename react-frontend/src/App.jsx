@@ -5,11 +5,15 @@ import { useEffect, useState } from "react";
 function App() {
   const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:8080/tasks")
+  function fetchTasks() {
+    fetch("http://192.168.15.159:8080/tasks")
       .then((response) => response.json())
       .then((data) => setTasks(data))
       .catch((error) => console.error("Erro ao carregar as tarefas:", error));
+  }
+
+  useEffect(() => {
+    fetchTasks();
   }, []);
 
   function onTaskClick(taskId) {
@@ -26,21 +30,10 @@ function App() {
     setTasks(newTasks);
   }
 
-  function fetchTasks() {
-    fetch("http://localhost:8080/tasks")
-      .then((response) => response.json())
-      .then((data) => setTasks(data))
-      .catch((error) => console.error("Erro ao carregar as tarefas:", error));
-  }
-
-  useEffect(() => {
-    fetchTasks();
-  }, []);
-
   function onAddTaskSubmit(title, description) {
     const newTask = { title, description, isCompleted: false };
 
-    fetch("http://localhost:8080/tasks", {
+    fetch("http://192.168.15.159:8080/tasks", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newTask),
@@ -66,7 +59,7 @@ function App() {
   }
 
   function deleteTask(taskId) {
-    fetch(`http://localhost:8080/tasks/${taskId}`, {
+    fetch(`http://192.168.15.159:8080/tasks/${taskId}`, {
       method: "DELETE",
     })
       .then(() => fetchTasks()) // Atualiza a lista de tarefas após deletar
